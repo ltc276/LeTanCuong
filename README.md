@@ -11,3 +11,5 @@ Shop bán sách
 ReactJS, Laravel
 ### Tuần 1
 Thiết kế frontend
+### Tuần 2 
+Thiết kế backend cơ bản
