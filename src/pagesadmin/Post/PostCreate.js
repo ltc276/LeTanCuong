@@ -32,23 +32,23 @@ function PostCreate() {
     return (
         <div className="container-fluid">
             <div className="row px-xl-5">
-                <div className="col-lg-9 col-md-4 ">
+                <div className="col-lg-12 col-md-4 ">
                     <form onSubmit={postStore} method="post">
-                        <div className="card bg-dark">
-                            <div className="card-header">
-                                <div className="row">
-                                    <div className="col-md-6">
+                        <div className="card">
+                            <div className="card-header" style={{ backgroundColor: "#FFCCFF", padding: 10 }}>
+                                <div className="row" >
+                                    <div className="col-md-10">
                                         <strong>
                                             Thêm danh mục
                                         </strong>
 
                                     </div>
-                                    <div className="col-md-6 text-end">
-                                        <button className="btn btn-sm  btn-succress me-2 bg-info" type="submit">
+                                    <div className="col-md-2 text-end" style={{ fontWeight: "bold", padding: 10 }}>
+                                        <button className="btn btn-sm  btn-succress me-2 bg-light" type="submit">
                                             Lưu
 
                                         </button>
-                                        <Link to="/admin/post" className="btn-btn-sm btn-info">
+                                        <Link to="/admin/post" className="btn-btn-sm btn-succress btn-light">
                                             Về danh sách
                                         </Link>
                                     </div>
@@ -58,25 +58,50 @@ function PostCreate() {
                             </div>
                             <div className="card-body">
                                 <div className="row" >
-                                    <div className="col-md-9">
-                                        <div className="mb-3">
-                                            <label htmlFor="name">Tên danh mục</label>
+                                    <div className="col-md-12" >
+                                        <div className="mb-3" style={{ fontWeight: "bold" }}>
+                                            <label htmlFor="title">Tiêu đề</label>
                                             <input type="text" name="title" value={title} onChange={(e) => setTitle(e.target.value)} className="form-control" />
 
                                         </div>
-                                        <div className="mb-3">
-                                            <label htmlFor="name">Chi tiet</label>
-                                            <input type="text" name="detail" value={detail} onChange={(e) => setDetail(e.target.value)} className="form-control" />
+                                        <div className="mb-3" style={{ fontWeight: "bold" }}>
+                                            <label htmlFor="detail">Chi tiết (Detail)</label>
+                                            <textarea name="detail" value={detail} onChange={(e) => setDetail(e.target.value)} className="form-control"></textarea>
 
                                         </div>
-                                        <div className="mb-3">
-                                            <label htmlFor="metakey">Từ khoá</label>
+                                        <div className="mb-3" style={{ fontWeight: "bold" }}>
+                                            <label htmlFor="type">Kiểu (Type)</label>
+                                            <textarea name="type" value={type} onChange={(e) => setType(e.target.value)} className="form-control"></textarea>
+
+                                        </div>
+                                        <div className="mb-3" style={{ fontWeight: "bold" }}>
+                                            <label htmlFor="metakey">Từ khoá (Metakey)</label>
                                             <textarea name="metakey" value={metakey} onChange={(e) => setMetakey(e.target.value)} className="form-control"></textarea>
 
                                         </div>
-                                        <div className="mb-3">
-                                            <label htmlFor="metadesc">Mô tả</label>
+                                        <div className="mb-3" style={{ fontWeight: "bold" }}>
+                                            <label htmlFor="metadesc">Khoá tìm kiếm (Metadesc)</label>
                                             <textarea name="metadesc" value={metadesc} onChange={(e) => setMetadesc(e.target.value)} className="form-control"></textarea>
+
+                                        </div>
+                                        <div className="mb-3" style={{ fontWeight: "bold" }}>
+                                            <label htmlFor="topic_id">Topic_id</label>
+                                            <textarea name="topic_id" value={topic_id} onChange={(e) => setTopicId(e.target.value)} className="form-control"></textarea>
+
+                                        </div>
+                                        <div className="mb-3" style={{ fontWeight: "bold" }}>
+                                            <label htmlFor="image">Ảnh (Image)</label>
+                                            <input type="file" id="image" name="image" className="form-control" />
+
+                                        </div>
+                                        <div className="mb-3" style={{ fontWeight: "bold" }}>
+                                            <label htmlFor="status">Tình trạng (Status)</label>
+                                            <select name="status" className="form-control" value={status} onChange={(e) => setStatus(e.target.value)}>
+
+                                                <option value="1">Xuất bản 1</option>
+                                                <option value="2">Không xuất bản 2</option>
+
+                                            </select>
 
                                         </div>
 
@@ -88,41 +113,7 @@ function PostCreate() {
                         </div>
                     </form>
                 </div>
-                <div className="col-lg-3 col-md-4">
-                    <div className="col-md-12 bg-dark">
-                        <div className="mb-3 ">
-                            <label htmlFor="topic_id">Danh mục cha</label>
-                            <select name="topic_id" className="form-control" value={topic_id} onChange={(e) => setTopicId(e.target.value)}>
-                                <option value="0">Danh mục cha</option>
 
-                            </select>
-
-                        </div>
-                        <div className="mb-3">
-                            <label htmlFor="type">Sắp xếp</label>
-                            <select name="ort_order" className="form-control" value={type} onChange={(e) => setType(e.target.value)}>
-                                <option value="0">None</option>
-
-                            </select>
-
-                        </div>
-                        <div className="mb-3">
-                            <label htmlFor="image">Hình đại diện</label>
-                            <input type="file" id="image" name="image" className="form-control" />
-
-                        </div>
-                        <div className="mb-3">
-                            <label htmlFor="status">Trạng thái</label>
-                            <select name="status" className="form-control" value={status} onChange={(e) => setStatus(e.target.value)}>
-
-                                <option value="1">Xuất bản</option>
-                                <option value="2">Chưa xuất bản</option>
-
-                            </select>
-
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     );

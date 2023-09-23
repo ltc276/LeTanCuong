@@ -66,108 +66,78 @@ function OrderUpdate() {
     return (
         <section className="mainList">
             <div className="wrapper">
-                <div className="card1">
+                <div className="container">
                     <form method="post" onSubmit={orderStore}>
-                        <div className="card-header">
-                            <strong className="title1">THÊM DANH MỤC</strong>
-                            <div className="button">
-                                <Link to="/admin/order" className="backward">
-                                    Go back
-                                </Link>
-                                <button type="submit" className="save">
-                                    Save
-                                </button>
+                        <div className="card">
+                            <div className="card-header" style={{ backgroundColor: "#FFCCFF", padding: 10 }}>
+                                <div className="row" >
+                                    <div className="col-md-10">
+                                        <strong className="title1">THÊM DANH MỤC</strong>
+                                    </div>
+                                    <div className="col-md-2 text-end" style={{ fontWeight: "bold", padding: 10 }}>
+                                        <div className="button">
+                                            <Link to="/admin/order" className="backward">
+                                                Go back
+                                            </Link>
+                                            <button type="submit" className="save">
+                                                Save
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        <div className="form-container grid -bottom-3  ">
-                            <div className="grid__item large--three-quarters">
-                                <fieldset className="input-container">
-                                    <label htmlFor="name">Tên danh mục</label>
-                                    <input
-                                        name="name"
-                                        type="text"
-                                        className="input"
-                                        id="name"
-                                        value={name}
-                                        onChange={(e) => setName(e.target.value)}
-                                        placeholder="Nhập tên danh mục..."
-                                    />
-                                </fieldset>
-                                <fieldset className="input-container">
-                                    <label htmlFor="note">Từ khóa</label>
-                                    <input
-                                        name="note"
-                                        type="text"
-                                        className="input"
-                                        id="name"
-                                        value={note}
-                                        onChange={(e) => setNote(e.target.value)}
-                                        placeholder="Nhập từ khóa..."
-                                    />
-                                </fieldset>
-                                <fieldset className="input-container">
-                                    <label htmlFor="address">Mô tả</label>
-                                    <textarea
-                                        name="address"
-                                        className="input1textarea"
-                                        id="name"
-                                        value={address}
-                                        onChange={(e) => setAddress(e.target.value)}
-                                        placeholder="Nhập mô tả..."
-                                    />
-                                </fieldset>
-                            </div>
-                            <div className="grid__item large--one-quarter">
-                                <fieldset className="input-container">
-                                    <label htmlFor="user_id">Danh mục cha</label>
-                                    <select
-                                        name="user_id"
-                                        className="input"
-                                        value={user_id}
-                                        onChange={(e) => setUserId(e.target.value)}
-                                    >
-                                        <option disabled>--Chọn danh mục--</option>
-                                        <option value="0">Không có cha</option>
-                                        {orders.map((order, index) => {
-                                            return (
-                                                <option key={index} value={order.id}>
-                                                    {order.name}
-                                                </option>
-                                            );
-                                        })}
-                                    </select>
-                                </fieldset>
-                                <fieldset className="input-container">
-                                    <label htmlFor="sort_order">Vị trí sắp xếp</label>
-                                    <select
-                                        name="sort_order"
-                                        className="input"
-                                    >
-                                        <option disabled>--Chọn vị trí sắp xếp--</option>
-                                        <option value="0">None</option>
-                                        <option value="1">Đứng đầu</option>
-                                        {orders.map((order, index) => {
-                                            return (
-                                                <option key={index} value={order.sort_order + 1}>
-                                                    Sau {order.name}
-                                                </option>
-                                            );
-                                        })}
-                                    </select>
-                                </fieldset>
-                                <fieldset className="input-container">
-                                    <label htmlFor="status">Tình trạng xuất bản</label>
-                                    <select
-                                        name="status"
-                                        className="input"
-                                        value={status}
-                                        onChange={(e) => setStatus(e.target.value)}
-                                    >
-                                        <option disabled>--Chọn tình trạng xuất bản--</option>
-                                        <option value="1">Xuất bản</option>
-                                        <option value="2">Không xuất bản</option>
-                                    </select>
-                                </fieldset>
+                            <div className="card-body">
+                                <div className="row" >
+                                    <div className="col-md-12" >
+                                        <div className="mb-3" style={{ fontWeight: "bold" }}>
+                                            <label htmlFor="name">Tên thương hiệu (Name)</label>
+                                            <input type="text" name="name" value={name} onChange={(e) => setName(e.target.value)} className="form-control" />
+
+                                        </div>
+                                        <div className="mb-3" style={{ fontWeight: "bold" }}>
+                                            <label htmlFor="phone">Điện thoại (Phone)</label>
+                                            <textarea name="phone" value={phone} onChange={(e) => setPhone(e.target.value)} className="form-control"></textarea>
+
+                                        </div>
+                                        <div className="mb-3" style={{ fontWeight: "bold" }}>
+                                            <label htmlFor="email">Hộp thư thoại (Email)</label>
+                                            <textarea name="email" value={email} onChange={(e) => setEmail(e.target.value)} className="form-control"></textarea>
+
+                                        </div>
+
+                                        <div className="mb-3" style={{ fontWeight: "bold" }}>
+                                            <label htmlFor="address">Đường (Address)</label>
+                                            <textarea name="address" value={address} onChange={(e) => setAddress(e.target.value)} className="form-control"></textarea>
+
+                                        </div>
+                                        <div className="mb-3" style={{ fontWeight: "bold" }}>
+                                            <label htmlFor="image">Ảnh (Image)</label>
+                                            <input type="file" id="image" name="image" className="form-control" />
+
+                                        </div>
+                                        <div className="mb-3" style={{ fontWeight: "bold" }}>
+                                            <label htmlFor="user_id">User_id</label>
+                                            <select name="user_id" className="form-control" value={user_id} onChange={(e) => setUserId(e.target.value)}>
+
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+
+                                            </select>
+
+                                        </div>
+                                        <div className="mb-3" style={{ fontWeight: "bold" }}>
+                                            <label htmlFor="status">Tình trạng (Status)</label>
+                                            <select name="status" className="form-control" value={status} onChange={(e) => setStatus(e.target.value)}>
+
+                                                <option value="1">Xuất bản 1</option>
+                                                <option value="2">Không xuất bản 2</option>
+
+                                            </select>
+
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </form>

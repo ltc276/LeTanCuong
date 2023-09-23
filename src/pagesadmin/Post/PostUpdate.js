@@ -6,11 +6,12 @@ function PostUpdate() {
     const navigate = useNavigate();
     const { id } = useParams("id");
 
-    const [name, setName] = useState("");
+    const [title, setTitle] = useState("");
     const [metakey, setMetakey] = useState("");
     const [metadesc, setMetadesc] = useState("");
-    const [parent_id, setParent_id] = useState(0);
-    const [sort_order, setSort_order] = useState(0);
+    const [topic_id, setTopic_id] = useState(0);
+    const [detail, setDetail] = useState("");
+    const [type, setType] = useState(0);
     const [status, setStatus] = useState(1);
     const [categories, setCategories] = useState([]);
     useEffect(function () {
@@ -28,19 +29,21 @@ function PostUpdate() {
                     setPost(result.data.data);
                 });
             })();
-            setName(post.name);
+            setTitle(post.title);
             setMetakey(post.metakey);
             setMetadesc(post.metadesc);
-            setParent_id(post.parent_id);
-            setSort_order(post.sort_order);
+            setTopic_id(post.topic_id);
+            setDetail(post.detail);
+            setType(post.type);
             setStatus(post.status);
         },
         [
             post.metadesc,
             post.metakey,
-            post.name,
-            post.parent_id,
-            post.sort_order,
+            post.title,
+            post.topic_id,
+            post.detail,
+            post.type,
             post.status,
             id,
         ]
@@ -49,11 +52,12 @@ function PostUpdate() {
         event.preventDefault();
         const image = document.querySelector("#image");
         var post = new FormData();
-        post.append("name", name);
+        post.append("title", title);
         post.append("metakey", metakey);
         post.append("metadesc", metadesc);
-        post.append("parent_id", parent_id);
-        post.append("sort_order", sort_order);
+        post.append("topic_id", topic_id);
+        post.append("detail", detail);
+        post.append("type", type);
         post.append("status", status);
         if (image.files.length === 0) {
             post.append("image", "");
@@ -68,126 +72,89 @@ function PostUpdate() {
     }
     return (
         <section className="mainList">
-            <div className="wrapper">
-                <div className="card1">
-                    <form method="post" onSubmit={postStore}>
-                        <div className="card-header">
-                            <strong className="title1">THÊM DANH MỤC</strong>
-                            <div className="button">
-                                <Link to="/admin/post" className="backward">
-                                    Go back
-                                </Link>
-                                <button type="submit" className="save">
-                                    Save
-                                </button>
+        <div className="wrapper">
+            <div className="container">
+                <form method="post" onSubmit={postStore}>
+                    <div className="card">
+                        <div className="card-header" style={{ backgroundColor: "#FFCCFF", padding: 10 }}>
+                            <div className="row" >
+                                <div className="col-md-10">
+                                    <strong className="title1">THÊM DANH MỤC</strong>
+                                </div>
+                                <div className="col-md-2 text-end" style={{ fontWeight: "bold", padding: 10 }}>
+                                    <div className="button">
+                                        <Link to="/admin/post" className="backward">
+                                            Go back
+                                        </Link>
+                                        <button type="submit" className="save">
+                                            Save
+                                        </button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <div className="form-container grid -bottom-3  ">
-                            <div className="grid__item large--three-quarters">
-                                <fieldset className="input-container">
-                                    <label htmlFor="name">Tên danh mục</label>
-                                    <input
-                                        name="name"
-                                        type="text"
-                                        className="input"
-                                        id="name"
-                                        value={name}
-                                        onChange={(e) => setName(e.target.value)}
-                                        placeholder="Nhập tên danh mục..."
-                                    />
-                                </fieldset>
-                                <fieldset className="input-container">
-                                    <label htmlFor="metakey">Từ khóa</label>
-                                    <input
-                                        name="metakey"
-                                        type="text"
-                                        className="input"
-                                        id="name"
-                                        value={metakey}
-                                        onChange={(e) => setMetakey(e.target.value)}
-                                        placeholder="Nhập từ khóa..."
-                                    />
-                                </fieldset>
-                                <fieldset className="input-container">
-                                    <label htmlFor="metadesc">Mô tả</label>
-                                    <textarea
-                                        name="metadesc"
-                                        className="input1textarea"
-                                        id="name"
-                                        value={metadesc}
-                                        onChange={(e) => setMetadesc(e.target.value)}
-                                        placeholder="Nhập mô tả..."
-                                    />
-                                </fieldset>
-                            </div>
-                            <div className="grid__item large--one-quarter">
-                                <fieldset className="input-container">
-                                    <label htmlFor="parent_id">Danh mục cha</label>
-                                    <select
-                                        name="parent_id"
-                                        className="input"
-                                        value={parent_id}
-                                        onChange={(e) => setParent_id(e.target.value)}
-                                    >
-                                        <option disabled>--Chọn danh mục--</option>
-                                        <option value="0">Không có cha</option>
-                                        {categories.map((post, index) => {
-                                            return (
-                                                <option key={index} value={post.id}>
-                                                    {post.name}
-                                                </option>
-                                            );
-                                        })}
-                                    </select>
-                                </fieldset>
-                                <fieldset className="input-container">
-                                    <label htmlFor="sort_order">Vị trí sắp xếp</label>
-                                    <select
-                                        name="sort_order"
-                                        className="input"
-                                        value={sort_order}
-                                        onChange={(e) => setSort_order(e.target.value)}
-                                    >
-                                        <option disabled>--Chọn vị trí sắp xếp--</option>
-                                        <option value="0">None</option>
-                                        <option value="1">Đứng đầu</option>
-                                        {categories.map((post, index) => {
-                                            return (
-                                                <option key={index} value={post.sort_order + 1}>
-                                                    Sau {post.name}
-                                                </option>
-                                            );
-                                        })}
-                                    </select>
-                                </fieldset>
-                                <fieldset className="input-container">
-                                    <label htmlFor="image">Hình ảnh</label>
-                                    <input
-                                        name="image"
-                                        type="file"
-                                        className="input"
-                                        id="image"
-                                    />
-                                </fieldset>
-                                <fieldset className="input-container">
-                                    <label htmlFor="status">Tình trạng xuất bản</label>
-                                    <select
-                                        name="status"
-                                        className="input"
-                                        value={status}
-                                        onChange={(e) => setStatus(e.target.value)}
-                                    >
-                                        <option disabled>--Chọn tình trạng xuất bản--</option>
-                                        <option value="1">Xuất bản</option>
-                                        <option value="2">Không xuất bản</option>
-                                    </select>
-                                </fieldset>
+                        <div className="card-body">
+                            <div className="row" >
+                                <div className="col-md-12" >
+                                    <div className="mb-3" style={{ fontWeight: "bold" }}>
+                                        <label htmlFor="title">Tên chủ đề (title)</label>
+                                        <input type="text" name="title" value={title} onChange={(e) => setTitle(e.target.value)} className="form-control" />
+
+                                    </div>
+                                    <div className="mb-3" style={{ fontWeight: "bold" }}>
+                                        <label htmlFor="metakey">Từ khoá (Metakey)</label>
+                                        <textarea name="metakey" value={metakey} onChange={(e) => setMetakey(e.target.value)} className="form-control"></textarea>
+
+                                    </div>
+                                    <div className="mb-3" style={{ fontWeight: "bold" }}>
+                                        <label htmlFor="metadesc">Khoá tìm kiếm (Metadesc)</label>
+                                        <textarea name="metadesc" value={metadesc} onChange={(e) => setMetadesc(e.target.value)} className="form-control"></textarea>
+
+                                    </div>
+                                    <div className="mb-3" style={{ fontWeight: "bold" }}>
+                                        <label htmlFor="image">Ảnh (Image)</label>
+                                        <input type="file" id="image" name="image" className="form-control" />
+
+                                    </div>
+                                    <div className="mb-3" style={{ fontWeight: "bold" }}>
+                                        <label htmlFor="topic_id">Topic_id</label>
+                                        <select name="topic_id" className="form-control" value={topic_id} onChange={(e) => setTopic_id(e.target.value)}>
+
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+
+                                        </select>
+
+                                    </div>
+                                    <div className="mb-3" style={{ fontWeight: "bold" }}>
+                                        <label htmlFor="detail">Chi tiết (Detail)</label>
+                                        <textarea name="detail" value={detail} onChange={(e) => setDetail(e.target.value)} className="form-control"></textarea>
+
+                                    </div>
+                                    <div className="mb-3" style={{ fontWeight: "bold" }}>
+                                        <label htmlFor="type">Kiểu (Type)</label>
+                                        <textarea name="type" value={type} onChange={(e) => setType(e.target.value)} className="form-control"></textarea>
+
+                                    </div>
+                                    <div className="mb-3" style={{ fontWeight: "bold" }}>
+                                        <label htmlFor="status">Tình trạng (Status)</label>
+                                        <select name="status" className="form-control" value={status} onChange={(e) => setStatus(e.target.value)}>
+
+                                            <option value="1">Xuất bản 1</option>
+                                            <option value="2">Không xuất bản 2</option>
+
+                                        </select>
+
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </form>
-                </div>
+                    </div>
+                </form>
             </div>
-        </section>
+        </div>
+    </section>
     );
 }
 

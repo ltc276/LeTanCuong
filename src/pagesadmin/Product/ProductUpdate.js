@@ -85,150 +85,92 @@ function CategoryUpdate() {
     return (
         <section className="mainList">
             <div className="wrapper">
-                <div className="card1">
+                <div className="container">
                     <form method="post" onSubmit={productStore}>
-                        <div className="card-header">
-                            <strong className="title1">THÊM DANH MỤC</strong>
-                            <div className="button">
-                                <Link to="/admin/product" className="backward">
-                                    Go back
-                                </Link>
-                                <button type="submit" className="save">
-                                    Save
-                                </button>
+                        <div className="card">
+                            <div className="card-header" style={{ backgroundColor: "#FFCCFF", padding: 10 }}>
+                                <div className="row" >
+                                    <div className="col-md-10">
+                                        <strong className="title1">THÊM DANH MỤC</strong>
+                                    </div>
+                                    <div className="col-md-2 text-end" style={{ fontWeight: "bold", padding: 10 }}>
+                                        <div className="button">
+                                            <Link to="/admin/product" className="backward">
+                                                Go back
+                                            </Link>
+                                            <button type="submit" className="save">
+                                                Save
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        <div className="form-container grid -bottom-3  ">
-                            <div className="grid__item large--three-quarters">
-                                <fieldset className="input-container">
-                                    <label htmlFor="name">Tên danh mục</label>
-                                    <input
-                                        name="name"
-                                        type="text"
-                                        className="input"
-                                        id="name"
-                                        value={name}
-                                        onChange={(e) => setName(e.target.value)}
-                                        placeholder="Nhập tên danh mục..."
-                                    />
-                                </fieldset>
-                                <fieldset className="input-container">
-                                    <label htmlFor="metakey">Từ khóa</label>
-                                    <input
-                                        name="metakey"
-                                        type="text"
-                                        className="input"
-                                        id="name"
-                                        value={metakey}
-                                        onChange={(e) => setMetakey(e.target.value)}
-                                        placeholder="Nhập từ khóa..."
-                                    />
-                                </fieldset>
-                                <fieldset className="input-container">
-                                    <label htmlFor="price">Giá:</label>
-                                    <input
-                                        name="price"
-                                        type="text"
-                                        className="input"
-                                        id="name"
-                                        value={price}
-                                        onChange={(e) => setPrice(e.target.value)}
-                                        placeholder="Nhập từ khóa..."
-                                    />
-                                </fieldset>
-                                <fieldset className="input-container">
-                                    <label htmlFor="price_sale">Giá sale:</label>
-                                    <input
-                                        name="price_sale"
-                                        type="text"
-                                        className="input"
-                                        id="name"
-                                        value={price_sale}
-                                        onChange={(e) => setPrice_sale(e.target.value)}
-                                        placeholder="Nhập từ khóa..."
-                                    />
-                                </fieldset>
-                                <fieldset className="input-container">
-                                    <label htmlFor="detail">Chi tiết</label>
-                                    <input
-                                        name="detail"
-                                        type="text"
-                                        className="input"
-                                        id="name"
-                                        value={detail}
-                                        onChange={(e) => setDetail(e.target.value)}
-                                        placeholder="Nhập từ khóa..."
-                                    />
-                                </fieldset>
-                                <fieldset className="input-container">
-                                    <label htmlFor="qty">Số lượng</label>
-                                    <input
-                                        name="qty"
-                                        type="text"
-                                        className="input"
-                                        id="name"
-                                        value={qty}
-                                        onChange={(e) => setQty(e.target.value)}
-                                        placeholder="Nhập từ khóa..."
-                                    />
-                                </fieldset>
-                                <fieldset className="input-container">
-                                    <label htmlFor="metadesc">Mô tả</label>
-                                    <textarea
-                                        name="metadesc"
-                                        className="input1textarea"
-                                        id="name"
-                                        value={metadesc}
-                                        onChange={(e) => setMetadesc(e.target.value)}
-                                        placeholder="Nhập mô tả..."
-                                    />
-                                </fieldset>
-                            </div>
-                            <div className="grid__item large--one-quarter">
-                                <fieldset className="input-container">
-                                    <label htmlFor="category_id">Danh mục cha</label>
-                                    <textarea
-                                        name="category_id"
-                                        className="input1textarea"
-                                        id="name"
-                                        value={category_id}
-                                        onChange={(e) => setCategory_id(e.target.value)}
-                                        placeholder="Nhập mô tả..."
-                                    />
-                                </fieldset>
-                                <fieldset className="input-container">
-                                    <label htmlFor="brand_id">ID Thương hiệu</label>
+                            <div className="card-body">
+                                <div className="row" >
+                                    <div className="col-md-12" >
+                                        <div className="mb-3" style={{ fontWeight: "bold" }}>
+                                            <label htmlFor="name">Tên thương hiệu (Name)</label>
+                                            <input type="text" name="name" value={name} onChange={(e) => setName(e.target.value)} className="form-control" />
 
-                                    <textarea
-                                        name="brand_id"
-                                        className="input"
-                                        value={brand_id}
-                                        onChange={(e) => setBrand_id(e.target.value)}
-                                    />
+                                        </div>
+                                        <div className="mb-3" style={{ fontWeight: "bold" }}>
+                                            <label htmlFor="price">Giá (Price)</label>
+                                            <textarea name="price" value={price} onChange={(e) => setPrice(e.target.value)} className="form-control"></textarea>
 
-                                </fieldset>
-                                <fieldset className="input-container">
-                                    <label htmlFor="image">Hình ảnh</label>
-                                    <input
-                                        name="image"
-                                        type="file"
-                                        className="input"
-                                        id="image"
-                                    />
-                                </fieldset>
-                                <fieldset className="input-container">
-                                    <label htmlFor="status">Tình trạng xuất bản</label>
-                                    <select
-                                        name="status"
-                                        className="input"
-                                        value={status}
-                                        onChange={(e) => setStatus(e.target.value)}
-                                    >
-                                        <option disabled>--Chọn tình trạng xuất bản--</option>
-                                        <option value="1">Xuất bản</option>
-                                        <option value="2">Không xuất bản</option>
-                                    </select>
-                                </fieldset>
+                                        </div>
+                                        <div className="mb-3" style={{ fontWeight: "bold" }}>
+                                            <label htmlFor="price_sale">Giá đã giảm (Price Sale)</label>
+                                            <textarea name="price_sale" value={price_sale} onChange={(e) => setPrice_sale(e.target.value)} className="form-control"></textarea>
+
+                                        </div>
+                                        <div className="mb-3" style={{ fontWeight: "bold" }}>
+                                            <label htmlFor="metakey">Từ khoá (Metakey)</label>
+                                            <textarea name="metakey" value={metakey} onChange={(e) => setMetakey(e.target.value)} className="form-control"></textarea>
+
+                                        </div>
+                                        <div className="mb-3" style={{ fontWeight: "bold" }}>
+                                            <label htmlFor="metadesc">Khoá tìm kiếm (Metadesc)</label>
+                                            <textarea name="metadesc" value={metadesc} onChange={(e) => setMetadesc(e.target.value)} className="form-control"></textarea>
+
+                                        </div>
+
+                                        <div className="mb-3" style={{ fontWeight: "bold" }}>
+                                            <label htmlFor="category_id">Category_id</label>
+                                            <textarea name="category_id" value={category_id} onChange={(e) => setCategory_id(e.target.value)} className="form-control"></textarea>
+
+                                        </div>
+                                        <div className="mb-3" style={{ fontWeight: "bold" }}>
+                                            <label htmlFor="image">Ảnh (Image)</label>
+                                            <input type="file" id="image" name="image" className="form-control" />
+
+                                        </div>
+                                        <div className="mb-3" style={{ fontWeight: "bold" }}>
+                                            <label htmlFor="brand_id">Brand_id</label>
+                                            <textarea name="brand_id" value={brand_id} onChange={(e) => setBrand_id(e.target.value)} className="form-control"></textarea>
+
+                                        </div>
+                                        <div className="mb-3" style={{ fontWeight: "bold" }}>
+                                            <label htmlFor="detail">Chi tiết (Detail)</label>
+                                            <textarea name="detail" value={detail} onChange={(e) => setDetail(e.target.value)} className="form-control"></textarea>
+
+                                        </div>
+                                        <div className="mb-3" style={{ fontWeight: "bold" }}>
+                                            <label htmlFor="qty">Số lượng (Qty)</label>
+                                            <textarea name="qty" value={qty} onChange={(e) => setQty(e.target.value)} className="form-control"></textarea>
+
+                                        </div>
+                                        <div className="mb-3" style={{ fontWeight: "bold" }}>
+                                            <label htmlFor="status">Tình trạng (Status)</label>
+                                            <select name="status" className="form-control" value={status} onChange={(e) => setStatus(e.target.value)}>
+
+                                                <option value="1">Xuất bản 1</option>
+                                                <option value="2">Không xuất bản 2</option>
+
+                                            </select>
+
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </form>

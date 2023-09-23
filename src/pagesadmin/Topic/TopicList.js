@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { MdAdd } from "react-icons/md";
 import { FaRegEye, FaEdit, FaTrashAlt } from "react-icons/fa";
 import topicservice from "../../service/TopicSevice";
-import { useEffect,useState } from "react";
+import { useEffect, useState } from "react";
 import Moment from 'moment';
 import { urlImage } from "../../config";
 
@@ -30,57 +30,54 @@ function TopicList() {
         <div className="card">
             <div className="card-header">
                 <div className="row">
-                    <div className="col-6">
-                        <strong className="text-primary">Thương hiệu</strong>
+                    <div className="col-11">
+                        <strong className="text-primary">Topic</strong>
 
                     </div>
-                    <div className="col-6 text-end">
+                    <div className="col-1 text-end">
 
                         <Link className="btn btn-sm btn-success" to="/admin/topic/create"><MdAdd />Thêm</Link>
 
                     </div>
                     <div className="card-body">
                         <table className="table table-striped table-bordered table-hover">
-                            <thead>
+                            <thead style={{ backgroundColor: "#FF66CC", fontWeight: "bold" }}>
                                 <tr>
-                                    <th>#</th>
-                                    <th>Hình</th>
-                                    <th>Tên thương hiệu</th>
-                                    <th>Slug</th>
-                                    <th>Ngày tạo</th>
-                                    <th>Chức năng</th>
-                                    <th>ID</th>
+                                    <th style={{ padding: 10, textAlign: "left" }}>Tên thương hiệu</th>
+                                    <th style={{ padding: 10, textAlign: "left" }}>Hình</th>
+                                    <th style={{ padding: 10, textAlign: "left" }}>Slug</th>
+                                    <th style={{ padding: 10, textAlign: "left" }}>Ngày tạo</th>
+                                    <th style={{ padding: 10, textAlign: "left" }}>Chức năng</th>
+                                    <th style={{ padding: 10, textAlign: "left" }}>ID</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 {topics.map(function (topic, index) {
                                     return (
                                         <tr key={index}>
-                                            <td>
-                                                <input type="checkbox" />
-                                            </td>
-                                            <td>
-                                                <img src={urlImage+'topic/'+topic.image} alt="hinh.png" className="img-fluid" width="50px" height="50px"/>
-                                            </td>
+
                                             <td>{topic.name}</td>
                                             <td>
-                                            {topic.slug}
+                                                <img src={urlImage + 'topic/' + topic.image} alt="hinh.png" className="img-fluid" width="50px" height="50px" />
                                             </td>
                                             <td>
-                                            {Moment(topic.created_at).format('DD-MM-yyyy hh:mm')}
+                                                {topic.slug}
                                             </td>
                                             <td>
-                                                <Link className="btn btn-sm btn-info me-2" to={'/admin/topic/show/'+topic.id}><FaRegEye /></Link>
-                                                <Link className="btn btn-sm btn-info me-2" to={'/admin/topic/update/'+topic.id}><FaEdit /></Link>
+                                                {Moment(topic.created_at).format('DD-MM-yyyy hh:mm')}
+                                            </td>
+                                            <td>
+                                                <Link className="btn btn-sm btn-info me-2" to={'/admin/topic/show/' + topic.id}><FaRegEye /></Link>
+                                                <Link className="btn btn-sm btn-info me-2" to={'/admin/topic/update/' + topic.id}><FaEdit /></Link>
                                                 <button className="btn btn-sm btn-danger" onClick={() => topicDelete(topic.id)}><FaTrashAlt /></button>
                                             </td>
                                             <td>
-                                            {topic.id}
+                                                {topic.id}
                                             </td>
                                         </tr>
 
                                     )
-                                })};
+                                })}
                             </tbody>
                         </table>
                     </div>

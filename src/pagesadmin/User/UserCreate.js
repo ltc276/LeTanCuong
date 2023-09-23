@@ -34,18 +34,18 @@ function UserCreate() {
     return (
         <div className="container-fluid">
             <div className="row px-xl-5">
-                <div className="col-lg-9 col-md-4 ">
+                <div className="col-lg-12 col-md-4 ">
                     <form onSubmit={userStore} method="post">
-                        <div className="card bg-dark">
-                            <div className="card-header">
-                                <div className="row">
-                                    <div className="col-md-6">
+                        <div className="card">
+                            <div className="card-header" style={{ backgroundColor: "#FFCCFF", padding: 10 }}>
+                                <div className="row" >
+                                    <div className="col-md-10">
                                         <strong>
                                             Thêm danh mục
                                         </strong>
 
                                     </div>
-                                    <div className="col-md-6 text-end">
+                                    <div className="col-md-2 text-end" style={{ fontWeight: "bold", padding: 10 }}>
                                         <button className="btn btn-sm  btn-succress me-2 bg-light" type="submit">
                                             Lưu
 
@@ -60,22 +60,54 @@ function UserCreate() {
                             </div>
                             <div className="card-body">
                                 <div className="row" >
-                                    <div className="col-md-9">
-                                        <div className="mb-3">
-                                            <label htmlFor="name">Name</label>
+                                    <div className="col-md-12">
+                                        <div className="mb-3" style={{ fontWeight: "bold" }}>
+                                            <label htmlFor="name">Tên</label>
                                             <input type="text" name="name" value={name} onChange={(e) => setName(e.target.value)} className="form-control" />
 
                                         </div>
-                                        <div className="mb-3">
+                                        <div className="mb-3" style={{ fontWeight: "bold" }}>
                                             <label htmlFor="email">Email</label>
                                             <textarea name="email" value={email} onChange={(e) => setEmail(e.target.value)} className="form-control"></textarea>
 
                                         </div>
-                                        <div className="mb-3">
+                                        <div className="mb-3" style={{ fontWeight: "bold" }}>
+                                            <label htmlFor="username">Username</label>
+                                            <textarea name="username" value={username} onChange={(e) => setUsername(e.target.value)} className="form-control"></textarea>
+
+                                        </div>
+                                        <div className="mb-3" style={{ fontWeight: "bold" }}>
+                                            <label htmlFor="password">Password</label>
+                                            <textarea name="password" value={password} onChange={(e) => setPassword(e.target.value)} className="form-control"></textarea>
+
+                                        </div>
+                                        <div className="mb-3" style={{ fontWeight: "bold" }}>
                                             <label htmlFor="phone">Phone</label>
                                             <textarea name="phone" value={phone} onChange={(e) => setPhone(e.target.value)} className="form-control"></textarea>
 
                                         </div>
+                                        <div className="mb-3" style={{ fontWeight: "bold" }}>
+                                            <label htmlFor="address">Address</label>
+                                            <textarea name="address" value={address} onChange={(e) => setAddress(e.target.value)} className="form-control"></textarea>
+
+                                        </div>
+                                        <div className="mb-3" style={{ fontWeight: "bold" }}>
+                                            <label htmlFor="roles">Roles</label>
+                                            <textarea name="roles" value={roles} onChange={(e) => setRoles(e.target.value)} className="form-control"></textarea>
+
+                                        </div>
+                                        <div className="mb-3" style={{ fontWeight: "bold" }}>
+                                            <label htmlFor="status">Tình trạng (Status)</label>
+                                            <select name="status" className="form-control" value={status} onChange={(e) => setStatus(e.target.value)}>
+
+                                                <option value="1">Xuất bản 1</option>
+                                                <option value="2">Không xuất bản 2</option>
+
+                                            </select>
+
+                                        </div>
+
+
 
                                     </div>
 
@@ -84,40 +116,6 @@ function UserCreate() {
 
                         </div>
                     </form>
-                </div>
-                <div className="col-lg-3 col-md-4">
-                    <div className="col-md-12 bg-dark">
-                        <div className="mb-3">
-                            <label htmlFor="username">Username</label>
-                            <textarea name="username" value={username} onChange={(e) => setUsername(e.target.value)} className="form-control"></textarea>
-
-                        </div>
-                        <div className="mb-3">
-                            <label htmlFor="password">Password</label>
-                            <textarea name="password" value={password} onChange={(e) => setPassword(e.target.value)} className="form-control"></textarea>
-
-                        </div>
-                        <div className="mb-3">
-                            <label htmlFor="roles">Roles</label>
-                            <textarea name="roles" value={roles} onChange={(e) => setRoles(e.target.value)} className="form-control"></textarea>
-
-                        </div>
-                        <div className="mb-3">
-                            <label htmlFor="address">Address</label>
-                            <textarea name="address" value={address} onChange={(e) => setAddress(e.target.value)} className="form-control"></textarea>
-
-                        </div>
-                        <div className="mb-3">
-                            <label htmlFor="status">Status</label>
-                            <select name="status" className="form-control" value={status} onChange={(e) => setStatus(e.target.value)}>
-
-                                <option value="1">Xuất bản 1</option>
-                                <option value="2">Không xuất bản 2</option>
-
-                            </select>
-
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>

@@ -13,3 +13,5 @@ ReactJS, Laravel
 Thiết kế frontend
 ### Tuần 2 
 Thiết kế backend cơ bản
+### Tuần 3 
+Tiếp tục sửa backend

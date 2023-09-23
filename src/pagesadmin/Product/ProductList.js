@@ -36,41 +36,38 @@ function ProductList() {
         <div className="card">
             <div className="card-header">
                 <div className="row">
-                    <div className="col-6">
-                        <strong className="text-primary">Thương hiệu</strong>
+                    <div className="col-11">
+                        <strong className="text-primary">Sản phẩm</strong>
 
                     </div>
-                    <div className="col-6 text-end">
+                    <div className="col-1 text-end">
 
                         <Link className="btn btn-sm btn-success" to="/admin/product/create"><MdAdd />Thêm</Link>
 
                     </div>
                     <div className="card-body">
                         <table className="table table-striped table-bordered table-hover">
-                            <thead>
+                            <thead style={{ backgroundColor: "#FF66CC", fontWeight: "bold" }}>
                                 <tr>
-                                    <th>#</th>
-                                    <th>Hình</th>
-                                    <th>Tên sản phẩm</th>
-                                    <th>Giá</th>
-                                    <th>Giá sale</th>
-                                    <th>Chi tiết</th>
-                                    <th>Ngày tạo</th>
-                                    <th>Chức năng</th>
-                                    <th>ID</th>
+                                    <th style={{ padding: 10, textAlign: "left" }}>Tên sản phẩm</th>
+                                    <th style={{ padding: 10, textAlign: "left" }}>Hình</th>
+                                    <th style={{ padding: 10, textAlign: "left" }}>Giá</th>
+                                    <th style={{ padding: 10, textAlign: "left" }}>Giá sale</th>
+                                    <th style={{ padding: 10, textAlign: "left" }}>Chi tiết</th>
+                                    <th style={{ padding: 10, textAlign: "left" }}>Ngày tạo</th>
+                                    <th style={{ padding: 10, textAlign: "left" }}>Chức năng</th>
+                                    <th style={{ padding: 10, textAlign: "left" }}>ID</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 {products.map(function (product, index) {
                                     return (
                                         <tr key={index}>
-                                            <td>
-                                                <input type="checkbox" />
-                                            </td>
+                                            <td>{product.name}</td>
                                             <td>
                                                 <img src={urlImage + 'product/' + product.image} alt="hinh.png" className="img-fluid" width="50px" height="50px" />
                                             </td>
-                                            <td>{product.name}</td>
+
                                             <td>
                                                 {product.price}
                                             </td>
@@ -94,7 +91,7 @@ function ProductList() {
                                         </tr>
 
                                     )
-                                })};
+                                })}
                             </tbody>
                         </table>
                     </div>

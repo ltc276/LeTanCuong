@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { MdAdd } from "react-icons/md";
 import { FaRegEye, FaEdit, FaTrashAlt } from "react-icons/fa";
 import contactservice from "../../service/ContactSevice";
-import { useEffect,useState } from "react";
+import { useEffect, useState } from "react";
 import Moment from 'moment';
 
 function ContactList() {
@@ -29,62 +29,61 @@ function ContactList() {
         <div className="card">
             <div className="card-header">
                 <div className="row">
-                    <div className="col-6">
-                        <strong className="text-primary">Thương hiệu</strong>
+                    <div className="col-11">
+                        <strong className="text-primary">Liên hệ</strong>
 
                     </div>
-                    <div className="col-6 text-end">
+                    <div className="col-1 text-end">
 
                         <Link className="btn btn-sm btn-success" to="/admin/contact/create"><MdAdd />Thêm</Link>
 
                     </div>
                     <div className="card-body">
                         <table className="table table-striped table-bordered table-hover">
-                            <thead>
+                            <thead style={{ backgroundColor: "#FF66CC", fontWeight: "bold" }}>
                                 <tr>
-                                    <th>#</th>
-                                    <th>Tên Contact</th>
-                                    <th>Phone</th>
-                                    <th>Email</th>
-                                    <th>Title</th>
-                                    <th>Content</th>
-                                    <th>Ngày tạo</th>
-                                    <th>Chức năng</th>
-                                    <th>ID</th>
+                                    <th style={{ padding: 10, textAlign: "left" }}>Tên khách hàng</th>
+                                    <th style={{ padding: 10, textAlign: "left" }}>Số điện thoại</th>
+                                    <th style={{ padding: 10, textAlign: "left" }}>Email</th>
+                                    <th style={{ padding: 10, textAlign: "left" }}>Tiêu đề</th>
+                                    <th style={{ padding: 10, textAlign: "left" }}>Phản hồi</th>
+                                    <th style={{ padding: 10, textAlign: "left" }}>Ngày tạo</th>
+                                    <th style={{ padding: 10, textAlign: "left" }}>Chức năng</th>
+                                    <th style={{ padding: 10, textAlign: "left" }}>ID</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 {contacts.map(function (contact, index) {
                                     return (
                                         <tr key={index}>
-                                            <td>
-                                                <input type="checkbox" />
-                                            </td>
                                             <td>{contact.name}</td>
                                             <td>
-                                            {contact.phone}
+                                                {contact.phone}
                                             </td>
                                             <td>
-                                            {contact.email}
+                                                {contact.email}
                                             </td>
                                             <td>
-                                            {contact.title}
+                                                {contact.title}
                                             </td>
                                             <td>
-                                            {contact.content}
+                                                {contact.content}
                                             </td>
                                             <td>
-                                            {Moment(contact.created_at).format('DD-MM-yyyy hh:mm')}
+                                                {Moment(contact.created_at).format('DD-MM-yyyy hh:mm')}
                                             </td>
                                             <td>
-                                                <Link className="btn btn-sm btn-info me-2" to={'/admin/contact/show/'+contact.id}><FaRegEye /></Link>
-                                                <Link className="btn btn-sm btn-info me-2" to={'/admin/contact/update/'+contact.id}><FaEdit /></Link>
+                                                <Link className="btn btn-sm btn-info me-2" to={'/admin/contact/show/' + contact.id}><FaRegEye /></Link>
+                                                <Link className="btn btn-sm btn-info me-2" to={'/admin/contact/update/' + contact.id}><FaEdit /></Link>
                                                 <button className="btn btn-sm btn-danger" onClick={() => contactDelete(contact.id)}><FaTrashAlt /></button>
+                                            </td>
+                                            <td>
+                                                {contact.id}
                                             </td>
                                         </tr>
 
                                     )
-                                })};
+                                })}
                             </tbody>
                         </table>
                     </div>

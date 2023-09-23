@@ -23,14 +23,12 @@ import ProductList from "../pagesadmin/Product/ProductList"
 import ProductCreate from "../pagesadmin/Product/ProductCreate"
 import ProductUpdate from "../pagesadmin/Product/ProductUpdate"
 import ProductShow from "../pagesadmin/Product/ProductShow"
-import SliderList from "../pagesadmin/Slider/SliderList"
-import SliderCreate from "../pagesadmin/Slider/SliderCreate"
-import SliderUpdate from "../pagesadmin/Slider/SliderUpdate"
-import SliderShow from "../pagesadmin/Slider/SliderShow"
+/*-------------*/
 import TopicList from "../pagesadmin/Topic/TopicList"
 import TopicCreate from "../pagesadmin/Topic/TopicCreate"
 import TopicUpdate from "../pagesadmin/Topic/TopicUpdate"
 import TopicShow from "../pagesadmin/Topic/TopicShow"
+/*-------------*/
 import PostList from "../pagesadmin/Post/PostList"
 import PostCreate from "../pagesadmin/Post/PostCreate"
 import PostUpdate from "../pagesadmin/Post/PostUpdate"
@@ -41,10 +39,6 @@ import OrderCreate from "../pagesadmin/Order/OrderCreate"
 import OrderUpdate from "../pagesadmin/Order/OrderUpdate"
 import OrderShow from "../pagesadmin/Order/OrderShow"
 /*-------------*/
-import OrderdetailList from "../pagesadmin/Orderdetail/OrderdetailList"
-import OrderdetailCreate from "../pagesadmin/Orderdetail/OrderdetailCreate"
-import OrderdetailUpdate from "../pagesadmin/Orderdetail/OrderdetailUpdate"
-import OrderdetailShow from "../pagesadmin/Orderdetail/OrderdetailShow"
 /*---------------*/
 import MenuList from "../pagesadmin/Menu/MenuList"
 import MenuCreate from "../pagesadmin/Menu/MenuCreate"
@@ -83,10 +77,6 @@ const RouterPrivate = [
     { path: '/admin/product/update/:id', component: ProductUpdate },
     { path: '/admin/product/show/:id', component: ProductShow },
     /*---------------------------------------------------------*/
-    { path: '/admin/slider', component: SliderList },
-    { path: '/admin/slider/create', component: SliderCreate },
-    { path: '/admin/slider/update/:id', component: SliderUpdate },
-    { path: '/admin/slider/show/:id', component: SliderShow },
     /*---------------------------------------------------------*/
     { path: '/admin/topic', component: TopicList },
     { path: '/admin/topic/create', component: TopicCreate },
@@ -101,12 +91,7 @@ const RouterPrivate = [
     { path: '/admin/order', component: OrderList },
     { path: '/admin/order/create', component: OrderCreate },
     { path: '/admin/order/update/:id', component: OrderUpdate },
-    { path: '/admin/order/show/:id', component: OrderShow },
-    /*---------------------------------------------------------*/
-    { path: '/admin/orderdetail', component: OrderdetailList },
-    { path: '/admin/orderdetail/create', component: OrderdetailCreate },
-    { path: '/admin/orderdetail/update/:id', component: OrderdetailUpdate },
-    { path: '/admin/orderdetail/show/:id', component: OrderdetailShow },
+    { path: '/admin/order/show/:id', component: OrderShow }
 
 ];
 export default RouterPrivate;

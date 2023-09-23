@@ -60,100 +60,62 @@ function MenuUpdate() {
     return (
         <section className="mainList">
             <div className="wrapper">
-                <div className="card1">
+                <div className="container">
                     <form method="post" onSubmit={categoryStore}>
-                        <div className="card-header">
-                            <strong className="title1">THÊM DANH MỤC</strong>
-                            <div className="button">
-                                <Link to="/admin/menu" className="backward">
-                                    Go back
-                                </Link>
-                                <button type="submit" className="save">
-                                    Save
-                                </button>
+                        <div className="card">
+                            <div className="card-header" style={{ backgroundColor: "#FFCCFF", padding: 10 }}>
+                                <div className="row" >
+                                    <div className="col-md-10">
+                                        <strong className="title1">THÊM DANH MỤC</strong>
+                                    </div>
+                                    <div className="col-md-2 text-end" style={{ fontWeight: "bold", padding: 10 }}>
+                                        <div className="button">
+                                            <Link to="/admin/category" className="backward">
+                                                Go back
+                                            </Link>
+                                            <button type="submit" className="save">
+                                                Save
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        <div className="form-container grid -bottom-3  ">
-                            <div className="grid__item large--three-quarters">
-                                <fieldset className="input-container">
-                                    <label htmlFor="name">Tên danh mục</label>
-                                    <input
-                                        name="name"
-                                        type="text"
-                                        className="input"
-                                        id="name"
-                                        value={name}
-                                        onChange={(e) => setName(e.target.value)}
-                                        placeholder="Nhập tên danh mục..."
-                                    />
-                                </fieldset>
-                                <fieldset className="input-container">
-                                    <label htmlFor="link">Link</label>
-                                    <input
-                                        name="link"
-                                        type="text"
-                                        className="input"
-                                        id="name"
-                                        value={link}
-                                        onChange={(e) => setLink(e.target.value)}
-                                        placeholder="Nhập từ khóa..."
-                                    />
-                                </fieldset>
-                                <fieldset className="input-container">
-                                    <label htmlFor="type">Type</label>
-                                    <textarea
-                                        name="type"
-                                        className="input1textarea"
-                                        id="name"
-                                        value={type}
-                                        onChange={(e) => setType(e.target.value)}
-                                        placeholder="Nhập mô tả..."
-                                    />
-                                </fieldset>
-                            </div>
-                            <div className="grid__item large--one-quarter">
-                                <fieldset className="input-container">
-                                    <label htmlFor="table_id">table_id</label>
-                                    <select
-                                        name="table_id"
-                                        className="input"
-                                        value={table_id}
-                                        onChange={(e) => setTableId(e.target.value)}
-                                    >
-                                        <option disabled>--Chọn vị trí sắp xếp--</option>
-                                        <option value="0">None</option>
-                                        <option value="1">Đứng đầu</option>
-                                        {categories.map((menu, index) => {
-                                            return (
-                                                <option key={index} value={menu.sort_order + 1}>
-                                                    Sau {menu.name}
-                                                </option>
-                                            );
-                                        })}
-                                    </select>
-                                </fieldset>
-                                <fieldset className="input-container">
-                                    <label htmlFor="image">Hình ảnh</label>
-                                    <input
-                                        name="image"
-                                        type="file"
-                                        className="input"
-                                        id="image"
-                                    />
-                                </fieldset>
-                                <fieldset className="input-container">
-                                    <label htmlFor="status">Tình trạng xuất bản</label>
-                                    <select
-                                        name="status"
-                                        className="input"
-                                        value={status}
-                                        onChange={(e) => setStatus(e.target.value)}
-                                    >
-                                        <option disabled>--Chọn tình trạng xuất bản--</option>
-                                        <option value="1">Xuất bản</option>
-                                        <option value="2">Không xuất bản</option>
-                                    </select>
-                                </fieldset>
+                            <div className="card-body">
+                                <div className="row" >
+                                    <div className="col-md-12" >
+                                        <div className="mb-3" style={{ fontWeight: "bold" }}>
+                                            <label htmlFor="name">Tên thương hiệu (Name)</label>
+                                            <input type="text" name="name" value={name} onChange={(e) => setName(e.target.value)} className="form-control" />
+
+                                        </div>
+                                        <div className="mb-3" style={{ fontWeight: "bold" }}>
+                                            <label htmlFor="link">Đường dẫn (link)</label>
+                                            <textarea name="link" value={link} onChange={(e) => setLink(e.target.value)} className="form-control"></textarea>
+
+                                        </div>
+                                        <div className="mb-3" style={{ fontWeight: "bold" }}>
+                                            <label htmlFor="type">Kiểu (type)</label>
+                                            <textarea name="type" value={type} onChange={(e) => setType(e.target.value)} className="form-control"></textarea>
+
+                                        </div>
+
+                                        <div className="mb-3" style={{ fontWeight: "bold" }}>
+                                            <label htmlFor="table_id">Table_id</label>
+                                            <textarea name="table_id" value={table_id} onChange={(e) => setTableId(e.target.value)} className="form-control"></textarea>
+
+                                        </div>
+                                        <div className="mb-3" style={{ fontWeight: "bold" }}>
+                                            <label htmlFor="status">Tình trạng (Status)</label>
+                                            <select name="status" className="form-control" value={status} onChange={(e) => setStatus(e.target.value)}>
+
+                                                <option value="1">Xuất bản 1</option>
+                                                <option value="2">Không xuất bản 2</option>
+
+                                            </select>
+
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </form>
