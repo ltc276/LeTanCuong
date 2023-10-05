@@ -8,6 +8,9 @@ function getProductBySlug(slug) {
 function getProductByCategoryId(category_id) {
     return httpAxios.get(`product_category_id/${category_id}`);
 }
+function getProductByCategoryIdAndLimit(category_id,limit,page=1) {
+    return httpAxios.get(`product_category/${category_id}/${limit}/${page}`);
+}
 function getAll() {
     return httpAxios.get('product/index');
 }
@@ -27,6 +30,7 @@ const productservice ={
     getProductAll:getProductAll,
     getProductBySlug:getProductBySlug,
     getProductByCategoryId:getProductByCategoryId,
+    getProductByCategoryIdAndLimit:getProductByCategoryIdAndLimit,
     getAll:getAll,
     getById:getById,
     create:create,

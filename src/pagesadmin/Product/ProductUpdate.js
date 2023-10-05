@@ -1,6 +1,8 @@
 import { Link, useNavigate, useParams } from "react-router-dom";
 import productservice from "../../service/ProductSevice";
 import { useEffect, useState } from "react";
+import categoryservice from "../../service/CategorySevice"
+import brandservice from "../../service/BrandSevice";
 
 function CategoryUpdate() {
     const navigate = useNavigate();
@@ -11,6 +13,8 @@ function CategoryUpdate() {
     const [metadesc, setMetadesc] = useState("");
     const [category_id, setCategory_id] = useState(0);
     const [price, setPrice] = useState(0);
+    const [categorys, setCategorys] = useState([]);
+    const [brands, setBrands] = useState([]);
     const [price_sale, setPrice_sale] = useState(0);
     const [detail, setDetail] = useState("");
     const [qty, setQty] = useState(0);
@@ -82,6 +86,26 @@ function CategoryUpdate() {
             navigate("../../admin/product", { replace: true });
         });
     }
+    useEffect(
+        function () {
+            (async function () {
+                await categoryservice.getAll().then(function (result) {
+                    setCategorys(result.data.data);
+                });
+            })();
+        },
+        []
+    );
+    useEffect(
+        function () {
+            (async function () {
+                await brandservice.getAll().then(function (result) {
+                    setBrands(result.data.data);
+                });
+            })();
+        },
+        []
+    );
     return (
         <section className="mainList">
             <div className="wrapper">
@@ -133,22 +157,38 @@ function CategoryUpdate() {
                                             <textarea name="metadesc" value={metadesc} onChange={(e) => setMetadesc(e.target.value)} className="form-control"></textarea>
 
                                         </div>
-
-                                        <div className="mb-3" style={{ fontWeight: "bold" }}>
-                                            <label htmlFor="category_id">Category_id</label>
-                                            <textarea name="category_id" value={category_id} onChange={(e) => setCategory_id(e.target.value)} className="form-control"></textarea>
-
-                                        </div>
                                         <div className="mb-3" style={{ fontWeight: "bold" }}>
                                             <label htmlFor="image">Ảnh (Image)</label>
                                             <input type="file" id="image" name="image" className="form-control" />
 
                                         </div>
-                                        <div className="mb-3" style={{ fontWeight: "bold" }}>
-                                            <label htmlFor="brand_id">Brand_id</label>
-                                            <textarea name="brand_id" value={brand_id} onChange={(e) => setBrand_id(e.target.value)} className="form-control"></textarea>
 
-                                        </div>
+                                        <div className="mb-3 ">
+                                                <label htmlFor="parent_id">Nhà xuất bản</label>
+                                                <select
+                                                    name="parent_id"
+                                                    className="form-control"
+                                                    value={brand_id}
+                                                    onChange={(e) => setBrand_id(e.target.value)}
+                                                >
+                                                    {brands.map((item, index) => {
+                                                        return <option key={index} value={item.id}>{item.name}</option>
+                                                    })}
+                                                </select>
+                                            </div>
+                                            <div className="mb-3 ">
+                                                <label htmlFor="parent_id">Danh mục</label>
+                                                <select
+                                                    name="parent_id"
+                                                    className="form-control"
+                                                    value={category_id}
+                                                    onChange={(e) => setCategory_id(e.target.value)}
+                                                >
+                                                    {categorys.map((item, index) => {
+                                                        return <option key={index} value={item.id}>{item.name}</option>
+                                                    })}
+                                                </select>
+                                            </div>
                                         <div className="mb-3" style={{ fontWeight: "bold" }}>
                                             <label htmlFor="detail">Chi tiết (Detail)</label>
                                             <textarea name="detail" value={detail} onChange={(e) => setDetail(e.target.value)} className="form-control"></textarea>

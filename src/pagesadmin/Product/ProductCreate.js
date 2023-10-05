@@ -1,12 +1,16 @@
 import { Link, useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import productservice from "../../service/ProductSevice"
+import categoryservice from "../../service/CategorySevice"
+import brandservice from "../../service/BrandSevice";
 function ProductCreate() {
     const navigate = useNavigate();
     const [name, setName] = useState('');
     const [metakey, setMetakey] = useState('');
     const [metadesc, setMetadesc] = useState('');
     const [detail, setDetail] = useState('');
+    const [categorys, setCategorys] = useState([]);
+    const [brands, setBrands] = useState([]);
     const [price, setPrice] = useState(0);
     const [qty, setQty] = useState(0);
     const [price_sale, setPrice_sale] = useState(0);
@@ -35,6 +39,26 @@ function ProductCreate() {
             navigate("../../admin/product", { replace: true });
         });
     }
+    useEffect(
+        function () {
+            (async function () {
+                await categoryservice.getAll().then(function (result) {
+                    setCategorys(result.data.data);
+                });
+            })();
+        },
+        []
+    );
+    useEffect(
+        function () {
+            (async function () {
+                await brandservice.getAll().then(function (result) {
+                    setBrands(result.data.data);
+                });
+            })();
+        },
+        []
+    );
     return (
         <div className="container-fluid">
             <div className="row px-xl-5">
@@ -105,32 +129,30 @@ function ProductCreate() {
                                     <div className="col-lg-3 col-md-4">
                                         <div className="col-md-12">
                                             <div className="mb-3 ">
-                                                <label htmlFor="parent_id">Brand_id</label>
-                                                <select name="parent_id" className="form-control" value={brand_id} onChange={(e) => setBrandtId(e.target.value)}>
-                                                    <option value="0">Chọn thương hiệu</option>
-                                                    <option value="6">Nintendo</option>
-                                                    <option value="8">Bandai</option>
-                                                    <option value="9">Square Enix</option>
-                                                    <option value="11">Sony Studio</option>
-                                                    <option value="19">Ubsoft</option>
-                                                    <option value="20">Sega</option>
-                                                    <option value="21">Capcom</option>
-                                                    <option value="22">CD Projekt red</option>
-
+                                                <label htmlFor="parent_id">Nhà xuất bản</label>
+                                                <select
+                                                    name="parent_id"
+                                                    className="form-control"
+                                                    value={brand_id}
+                                                    onChange={(e) => setBrandtId(e.target.value)}
+                                                >
+                                                    {brands.map((item, index) => {
+                                                        return <option key={index} value={item.id}>{item.name}</option>
+                                                    })}
                                                 </select>
-
                                             </div>
-                                            <div className="mb-3">
-                                                <label htmlFor="category_id">Category_id</label>
-                                                <select name="category_id" className="form-control" value={category_id} onChange={(e) => setCategorytId(e.target.value)}>
-                                                    <option value="0">Chọn danh mục</option>
-                                                    <option value="15">PS5</option>
-                                                    <option value="13">PS4</option>
-                                                    <option value="12">Nintendo</option>
-                                                    <option value="14">XBOX</option>
-
+                                            <div className="mb-3 ">
+                                                <label htmlFor="parent_id">Danh mục</label>
+                                                <select
+                                                    name="parent_id"
+                                                    className="form-control"
+                                                    value={category_id}
+                                                    onChange={(e) => setCategorytId(e.target.value)}
+                                                >
+                                                    {categorys.map((item, index) => {
+                                                        return <option key={index} value={item.id}>{item.name}</option>
+                                                    })}
                                                 </select>
-
                                             </div>
                                             <div className="mb-3">
                                                 <label htmlFor="image">Image</label>

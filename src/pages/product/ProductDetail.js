@@ -1,6 +1,27 @@
 import React from "react";
+import { useEffect, useState } from "react";
+import productservice from "../../service/ProductSevice";
+import { Link, useParams } from "react-router-dom";
+import { urlImage } from "../../config";
 
-const ProductDetail = () => (
+function ProductDetail() {
+    const [product, setProduct] = useState([]);
+    const {slug} = useParams();
+    useEffect(function () {
+        (async function () {
+            await productservice.getProductBySlug(slug)
+                .then(function (result) {
+                    if(result.data.success===true)
+                    {
+                    setProduct(result.data.product);
+                }
+                }
+                );
+        })();
+    }, []);
+    return ( 
+
+
     <>
     <section className="py-3 bg-light">
       <div className="container">
@@ -32,7 +53,7 @@ const ProductDetail = () => (
                   <div>
                     {" "}
                     <a href="#">
-                      <img src={require("../../assets/images/items/15.jpg")} />
+                      <img src={urlImage+'product/'+product.image} />
                     </a>
                   </div>
                 </div>{" "}
@@ -63,7 +84,7 @@ const ProductDetail = () => (
           </aside>
           <main className="col-md-6">
             <article className="product-info-aside">
-              <h2 className="title mt-3">Tâm lý học hẹn hò </h2>
+              <h2 className="title mt-3">{product.name} </h2>
               <div className="rating-wrap my-3">
                 <ul className="rating-stars">
                   <li style={{ width: "80%" }} className="stars-active">
@@ -85,8 +106,8 @@ const ProductDetail = () => (
               </div>{" "}
               {/* rating-wrap.// */}
               <div className="mb-3">
-                <var className="price h4">239.000 VNĐ</var>
-                <span className="text-muted">279.000 VNĐ incl. VAT</span>
+                <var className="price h4">{product.price_sale}.000 VNĐ</var>
+                <span style={{ textDecoration: "line-through"}} className="text-muted"> {product.price} .000 VNĐ</span>
               </div>{" "}
               {/* price-detail-wrap .// */}
               <p>
@@ -99,16 +120,16 @@ const ProductDetail = () => (
               <dl className="row">
                 <dt className="col-sm-3">Tác giả</dt>
                 <dd className="col-sm-9">
-                  <a href="#">Nhiều tác giả</a>
+                  <a href="#">{product.metakey}</a>
                 </dd>
                 <dt className="col-sm-3">Mã vạch</dt>
-                <dd className="col-sm-9">596 065</dd>
+                <dd className="col-sm-9">{product.detail}</dd>
                 <dt className="col-sm-3">Bảo hành</dt>
                 <dd className="col-sm-9">1 năm</dd>
                 <dt className="col-sm-3">Giao hàng</dt>
                 <dd className="col-sm-9">24 giờ</dd>
-                <dt className="col-sm-3">Tình trạng</dt>
-                <dd className="col-sm-9">trong Kho</dd>
+                <dt className="col-sm-3">Nhà xuất bản</dt>
+                <dd className="col-sm-9">{product.metadesc}</dd>
               </dl>
               <div className="form-row  mt-4">
                 <div className="form-group col-md flex-grow-0">
@@ -343,4 +364,6 @@ const ProductDetail = () => (
   </>
 
 );
+
+}
 export default ProductDetail;

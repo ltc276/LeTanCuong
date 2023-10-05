@@ -5,6 +5,9 @@ function getAll() {
 function getById(id) {
     return httpAxios.get(`category/show/${id}`);
 }
+function getCategoryHome(limit) {
+    return httpAxios.get(`category_home/${limit}`);
+}
 function create(category) {
     return httpAxios.post('category/store', category);
 }
@@ -16,6 +19,7 @@ function remove(id) {
 }
 const categoryservice = {
     getAll: getAll,
+    getCategoryHome:getCategoryHome,
     getById: getById,
     create: create,
     update: update,

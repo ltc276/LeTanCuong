@@ -4,12 +4,12 @@ import productservice from "../../service/ProductSevice";
 import { Link, useParams } from "react-router-dom";
 import { urlImage } from "../../config";
 import brandservice from "../../service/BrandSevice";
-function Lightnovel() {
+function Mangak() {
   const [products, setProducts] = useState([]);
   const [brands, setBrands] = useState([]);
   useEffect(function () {
     (async function () {
-      await productservice.getProductByCategoryId(11)
+      await productservice.getProductByCategoryId(10)
         .then(function (result) {
           setProducts(result.data.product);
         }
@@ -19,16 +19,16 @@ function Lightnovel() {
   return (
     <section className="padding-bottom">
       <header className="section-heading heading-line">
-        <h4 className="title-section text-uppercase">Light Novel</h4>
+        <h4 className="title-section text-uppercase">Mangak</h4>
       </header>
       <div className="card card-home-category">
         <div className="row no-gutters">
           <div className="col-md-3">
             <div className="home-category-banner bg-light-orange">
-              <h5 className="title">Light novel</h5>
+              <h5 className="title">Mangak</h5>
               <p>
-                Hay còn được gọi là tiểu thuyết ngắn, là một dòng tiểu thuyết có nguồn gốc từ Nhật Bản.
-                "Light" trong "light novel" nghĩa là ngắn, nhẹ về số lượng từ ngữ.{" "}
+              là một cụm từ trong tiếng Nhật để chỉ các loại truyện tranh và tranh biếm họa. 
+              Manga được xem là từ đặc biệt để chỉ riêng truyện tranh xuất phát từ Nhật Bản.{" "}
               </p>
               <a href="/product-detail/1" className="btn btn-outline-primary rounded-pill">
                 Xem Ngay
@@ -79,5 +79,5 @@ function Lightnovel() {
     </section>
   )
 }
-export default Lightnovel;
+export default Mangak;
 

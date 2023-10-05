@@ -1,12 +1,13 @@
 import Slider from "../../pages/home/Slider";
 import Deal from "../../pages/home/Deal";
 import React from "react";
-import Literature from "../../pages/home/Literature";
+import CategoryHome from "../../pages/home/CategoryHome";
 import Lightnovel from "../../pages/home/Lightnovel";
 import Request from "../../pages/home/Request";
 import Items from "../../pages/home/Items";
 import Distributor from "../../pages/home/Distributor";
 import Region from "../../pages/home/Region";
+import Mangak from "../../pages/home/Mangak";
 
 
 function Home(props) {
@@ -14,8 +15,9 @@ function Home(props) {
     <div className="container">
       <Slider />
       <Deal />
-      <Literature />
+      <CategoryHome/>
       <Lightnovel />
+      <Mangak />
       <Request />
       <Items />
       <Distributor />

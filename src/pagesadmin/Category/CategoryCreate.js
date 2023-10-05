@@ -1,11 +1,10 @@
 import { Link, useNavigate } from "react-router-dom";
-
-
 import { useState } from "react";
 import categoryservice from "../../service/CategorySevice"
 function CategoryCreate() {
     const navigate = useNavigate();
     const [name, setName] = useState('');
+    const [link, setLink] = useState('');
     const [metakey, setMetakey] = useState('');
     const [metadesc, setMetadesc] = useState('');
     const [parent_id, setParendtId] = useState(0);
@@ -76,18 +75,18 @@ function CategoryCreate() {
                                         </div>
                                         <div className="mb-3" style={{ fontWeight: "bold" }}>
                                             <label htmlFor="sort_order">Sort_order</label>
-                                            <select name="ort_order" className="form-control" value={sort_order} onChange={(e) => setSortOrder(e.target.value)}>
+                                            <select name="sort_order" className="form-control" value={sort_order} onChange={(e) => setSortOrder(e.target.value)}>
                                                 <option value="0">None</option>
 
                                             </select>
 
                                         </div>
                                         <div className="mb-3" style={{ fontWeight: "bold" }}>
-                                            <label htmlFor="sort_order">Parent_id</label>
-                                            <select name="ort_order" className="form-control" value={parent_id} onChange={(e) => setParendtId(e.target.value)}>
-                                                <option value="0">None</option>
-                                                <option value="1">1</option>
-                                                <option value="2">2</option>
+                                            <label htmlFor="parent_id">Parent_id</label>
+                                            <select name="parent_id" className="form-control" value={parent_id} onChange={(e) => setParendtId(e.target.value)}>
+                                                <option value="0">Đứng đầu (0)</option>
+                                                <option value="1">Đứng hai (1)</option>
+                                                <option value="2">Đứng sau (2)</option>
 
                                             </select>
 
