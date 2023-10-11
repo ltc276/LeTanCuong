@@ -1,9 +1,27 @@
 import React from "react";
+import loginApi from "../../service/UserSevice";
+import { useEffect, useState } from "react";
+import { toast } from "react-toastify";
 
-const Login = () => (
+function Login() {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const handleLogin = async()=>{
+    if (!email || !password){
+      toast.error("Email hoặc Password không chính xác");
+      return;
+    }
+    let res = await loginApi("eve.holt@reqres.in",password);
+    if (res && res.token){
+      localStorage.setItem("token",res.token)
+    }
+    console.log(">>> check login: ",res)
+  }
+  return(
   <section className="section-conten padding-y" style={{ minHeight: "84vh" }}>
     {/* ============================ COMPONENT LOGIN   ================================= */}
     <div className="card mx-auto" style={{ maxWidth: 380, marginTop: 100 }}>
+
       <div className="card-body">
         <h4 className="card-title mb-4">Sign in</h4>
         <form>
@@ -19,8 +37,10 @@ const Login = () => (
             <input
               name=""
               className="form-control"
-              placeholder="Username"
+              placeholder="Email"
               type="text"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)} 
             />
           </div>{" "}
           {/* form-group// */}
@@ -30,6 +50,8 @@ const Login = () => (
               className="form-control"
               placeholder="Password"
               type="password"
+              value={password} 
+              onChange={(e) => setPassword(e.target.value)}
             />
           </div>{" "}
           {/* form-group// */}
@@ -49,11 +71,11 @@ const Login = () => (
           </div>{" "}
           {/* form-group form-check .// */}
           <div className="form-group">
-            <button type="submit" className="btn btn-primary btn-block">
-              {" "}
+            <button type="submit" className="btn btn-primary btn-block" onClick={()=>handleLogin}>
+            
               Login
             </button>
-          </div>{" "}
+          </div>
           {/* form-group// */}
         </form>
       </div>{" "}
@@ -68,5 +90,5 @@ const Login = () => (
     {/* ============================ COMPONENT LOGIN  END.// ================================= */}
   </section>
 );
-
+}
 export default Login;

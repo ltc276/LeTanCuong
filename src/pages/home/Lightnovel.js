@@ -6,12 +6,11 @@ import { urlImage } from "../../config";
 import brandservice from "../../service/BrandSevice";
 function Lightnovel() {
   const [products, setProducts] = useState([]);
-  const [brands, setBrands] = useState([]);
   useEffect(function () {
     (async function () {
-      await productservice.getProductByCategoryId(11)
+      await productservice.getProductByCategoryIdAndLimit(11,8,1)
         .then(function (result) {
-          setProducts(result.data.product);
+          setProducts(result.data.products);
         }
         );
     })();
@@ -46,7 +45,7 @@ function Lightnovel() {
                 return (
 
                   <li className="col-6 col-lg-3 col-md-4">
-                    <Link to={"/chi-tiet-san-pham/" + product.slug} className="item">
+                    <Link to={"/chi-tiet-san-pham/" + product.slug+"/"+product.category_id} className="item">
                       <div className="card-body">
 
                         <h6 className="title">

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Product;
+use App\Models\Category;
 use Illuminate\Support\Str;
 
 class ProductController extends Controller
@@ -81,6 +82,31 @@ class ProductController extends Controller
                 'success' => true,
                 'message' => 'Tải dữ liệu thành công',
                 'product' => $product
+            ],
+            200
+        );
+    }
+    public function product_detail_plus($slug,$category_id)
+    {
+        $product = Product::where([['slug','=',$slug],['status','=',1],['category_id','=',$category_id]])->first();
+        $products = Product::where([['category_id','=',$category_id],['status','=',1]])->whereNotIn('id',[$product->id])->get();
+        if($product==null)
+        {
+            return response()->json(
+                [
+                    'success' => false,
+                    'message' => 'Tải dữ liệu không thành công',
+                    'product' => null
+                ],
+                404
+            );
+        }
+        return response()->json(
+            [
+                'success' => true,
+                'message' => 'Tải dữ liệu thành công',
+                'product' => $product,
+                'products' => $products
             ],
             200
         );
@@ -187,6 +213,46 @@ class ProductController extends Controller
             200
         );
     }
+    public function product_category($category_id, $limit, $page = 1)
+    {
+        $listid = array();
+        array_push($listid, $category_id + 0);
+        $args_cat1 = [
+            ['parent_id', '=', $category_id + 0],
+            ['status', '=', 1]
+        ];
+        $list_category1 = Category::where($args_cat1)->get();
+        if (count($list_category1) > 0) {
+            foreach ($list_category1 as $row1) {
+                array_push($listid, $row1->id);
+                $args_cat2 = [
+                    ['parent_id', '=', $row1->id],
+                    ['status', '=', 1]
+                ];
+                $list_category2 = Category::where($args_cat2)->get();
+                if (count($list_category2) > 0) {
+                    foreach ($list_category2 as $row2) {
+                        array_push($listid, $row2->id);
+                    }
+                }
+            }
+        }
+        $offset = ($page - 1) * $limit;
+        $products = Product::where('status', 1)
+            ->whereIn('category_id', $listid)
+            ->orderBy('created_at', 'DESC')
+            ->offset($offset)
+            ->limit($limit)
+            ->get();
+        return response()->json(
+            [
+                'success' => true,
+                'message' => 'Tải dữ liệu thành công',
+                'products' => $products
+            ],
+            200
+        );
+    }
     public function destroy($id)
     {
         $product=Product::find($id);
@@ -203,3 +269,4 @@ class ProductController extends Controller
         );
     }
 }
+

@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('name', 1000);
             $table->string('slug', 1000);
             $table->string('image', 1000)->nullable();
+            $table->string('description',1000);
             $table->unsignedInteger('sort_order')->default(0);
             $table->string('metakey');
             $table->string('metadesc');

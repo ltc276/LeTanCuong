@@ -40,6 +40,7 @@ class BrandController extends Controller
         } 
         $brand->sort_order = $request->sort_order; //form
         $brand->metakey = $request->metakey; //form
+        $brand->description = $request->description; //form
         $brand->metadesc = $request->metadesc; //form
         $brand->created_at = date('Y-m-d H:i:s');
         $brand->created_by = 1;
@@ -66,6 +67,7 @@ class BrandController extends Controller
         } 
         $brand->sort_order = $request->sort_order; //form
         $brand->metakey = $request->metakey; //form
+        $brand->description = $request->description; //form
         $brand->metadesc = $request->metadesc; //form
         $brand->updated_at = date('Y-m-d H:i:s');
         $brand->updated_by = 1;

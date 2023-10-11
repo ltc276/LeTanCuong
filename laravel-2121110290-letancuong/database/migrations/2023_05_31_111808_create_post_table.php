@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('title');
             $table->string('slug');
             $table->mediumText('detail');
+            $table->string('description',1000);
             $table->string('image',1000);
             $table->string('type',100);
             $table->string('metakey');

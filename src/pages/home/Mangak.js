@@ -3,15 +3,13 @@ import { useEffect, useState } from "react";
 import productservice from "../../service/ProductSevice";
 import { Link, useParams } from "react-router-dom";
 import { urlImage } from "../../config";
-import brandservice from "../../service/BrandSevice";
 function Mangak() {
   const [products, setProducts] = useState([]);
-  const [brands, setBrands] = useState([]);
   useEffect(function () {
     (async function () {
-      await productservice.getProductByCategoryId(10)
+      await productservice.getProductByCategoryIdAndLimit(10,8,1)
         .then(function (result) {
-          setProducts(result.data.product);
+          setProducts(result.data.products);
         }
         );
     })();
@@ -46,7 +44,7 @@ function Mangak() {
                 return (
 
                   <li className="col-6 col-lg-3 col-md-4">
-                    <Link to={"/chi-tiet-san-pham/" + product.slug} className="item">
+                    <Link to={"/chi-tiet-san-pham/" + product.slug+"/"+product.category_id} className="item">
                       <div className="card-body">
 
                         <h6 className="title">

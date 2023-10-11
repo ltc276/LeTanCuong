@@ -17,8 +17,10 @@ return new class extends Migration
             $table->id(); //id
             $table->string('name',1000);
             $table->string('link',1000);
+            $table->string('description',1000);
             $table->unsignedInteger('sort_order');
             $table->string('position');
+            $table->string('image');
             $table->timestamps(); //created_at, updated_at
             $table->unsignedInteger('created_by')->default(1);
             $table->unsignedInteger('updated_by')->nullable();

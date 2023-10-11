@@ -8,6 +8,7 @@ import Items from "../../pages/home/Items";
 import Distributor from "../../pages/home/Distributor";
 import Region from "../../pages/home/Region";
 import Mangak from "../../pages/home/Mangak";
+import Shortstory from "../../pages/home/Shortstory";
 
 
 function Home(props) {
@@ -16,6 +17,7 @@ function Home(props) {
       <Slider />
       <Deal />
       <CategoryHome/>
+      <Shortstory/>
       <Lightnovel />
       <Mangak />
       <Request />

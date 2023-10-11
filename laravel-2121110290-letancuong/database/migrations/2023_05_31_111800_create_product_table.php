@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('slug',1000);
             $table->float('price');
             $table->float('price_sale');
+            $table->string('description',1000);
             $table->unsignedInteger('qty');
             $table->string('image',1000);
             $table->mediumText('detail');

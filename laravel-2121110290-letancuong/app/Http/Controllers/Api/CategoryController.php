@@ -41,7 +41,7 @@ class CategoryController extends Controller
             }
         } 
         $category->sort_order = $request->sort_order; //form
-        $category->metakey = $request->metakey; //form
+        $category->metakey = $request->metakey; //form  
         $category->metadesc = $request->metadesc; //form
         $category->parent_id = $request->parent_id;
         $category->created_at = date('Y-m-d H:i:s');
@@ -51,6 +51,21 @@ class CategoryController extends Controller
         return response()->json(
             ['success' => true, 'message' => 'Thành công', 'data' => $category],
             201
+        );
+    }
+    public function category_home($limit)
+    {
+        $categorys = Category::where('status', 1)
+            ->orderBy('created_at', 'DESC')
+            ->limit($limit)
+            ->get();
+        return response()->json(
+            [
+                'success' => true,
+                'message' => 'Tải dữ liệu thành công',
+                'categorys' => $categorys
+            ],
+            200
         );
     }
     public function update(Request $request, $id)

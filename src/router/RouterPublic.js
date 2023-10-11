@@ -15,6 +15,7 @@ import Content from "../pages/Content/Content";
 import ListingGrid from "../pages/category/Grid";
 import ListingList from "../pages/category/Large";
 import AllCategory from "../pages/category/Category";
+import CategoryDetail from "../pages/category/CategoryDetail";
 const RouterPublic=[
     {path: '/', component:Home},
     {path: '/profile-main', component:ProfileMain},
@@ -24,12 +25,13 @@ const RouterPublic=[
     {path: '/profile-wishlist', component:ProfileWishlist},
     {path: '/profile-seller', component:ProfileSeller},
     {path: '/shopping-cart', component:ShoppingCart},
-    {path: '/chi-tiet-san-pham/:slug', component:ProductDetail},
+    {path: '/chi-tiet-san-pham/:slug/:category_id', component:ProductDetail},
     {path: '/login', component:Login},
     {path: '/register', component:Register},
     {path: '/content', component:Content},
     {path: '/listing-grid', component:ListingGrid},
     {path: '/tat-ca-loai', component:AllCategory},
+    {path: '/tat-ca-loai/:id', component:CategoryDetail},
     {path: '/listing-large', component:ListingList},
 
 

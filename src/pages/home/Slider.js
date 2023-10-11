@@ -5,7 +5,7 @@ const Slider = () => (
     <main className="card">
       <div className="card-body">
         <div className="row">
-          <aside className="col-lg col-md-3 flex-lg-grow-0">
+        {/*<aside className="col-lg col-md-3 flex-lg-grow-0">
             <nav className="nav-home-aside">
               <h6 className="title-category">
                 MY MARKETS <i className="d-md-none icon fa fa-chevron-down" />
@@ -52,8 +52,9 @@ const Slider = () => (
               </ul>
             </nav>
           </aside>
+          */}
           {/* col.// */}
-          <div className="col-md-9 col-xl-7 col-lg-7">
+          <div className="col-md-12">
             {/* ================== COMPONENT SLIDER  BOOTSTRAP  ==================  */}
             <div
               id="carousel1_indicator"
@@ -117,8 +118,8 @@ const Slider = () => (
             {/* ==================  COMPONENT SLIDER BOOTSTRAP end.// ==================  .// */}
           </div>
           {/* col.// */}
-          <div className="col-md d-none d-lg-block flex-grow-1">
-            <aside className="special-home-right">
+         <div className="col-md d-none d-lg-block flex-grow-1">
+             {/*<aside className="special-home-right">
               <h6 className="bg-blue text-center text-white mb-0 p-2">
                 Popular category
               </h6>
@@ -164,7 +165,7 @@ const Slider = () => (
                   alt=""
                 />
               </div>
-            </aside>
+            </aside>*/}
           </div>
           {/* col.// */}
         </div>

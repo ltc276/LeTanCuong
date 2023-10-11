@@ -14,12 +14,16 @@ function update(user, id) {
 function remove(id) {
     return httpAxios.delete(`user/destroy/${id}`);
 }
+function loginApi(email,password) {
+    return httpAxios.post("/login",{email,password});
+}
 const userservice = {
     getAll: getAll,
     getById: getById,
     create: create,
     update: update,
-    remove: remove
+    remove: remove,
+    loginApi:loginApi
 }
 export default userservice;
 

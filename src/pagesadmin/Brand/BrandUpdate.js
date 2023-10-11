@@ -10,6 +10,7 @@ function BrandUpdate() {
     const [name, setName] = useState("");
     const [metakey, setMetakey] = useState("");
     const [metadesc, setMetadesc] = useState("");
+    const [description, setDescription] = useState("");
     const [sort_order, setSort_order] = useState(0);
     const [status, setStatus] = useState(1);
     const [categories, setCategories] = useState([]);
@@ -30,6 +31,7 @@ function BrandUpdate() {
             })();
             setName(brand.name);
             setMetakey(brand.metakey);
+            setDescription(brand.description);
             setMetadesc(brand.metadesc);
             setSort_order(brand.sort_order);
             setStatus(brand.status);
@@ -39,6 +41,7 @@ function BrandUpdate() {
             brand.metakey,
             brand.name,
             brand.sort_order,
+            brand.description,
             brand.status,
             id,
         ]
@@ -49,6 +52,7 @@ function BrandUpdate() {
         var brand = new FormData();
         brand.append("name", name);
         brand.append("metakey", metakey);
+        brand.append("description", description);
         brand.append("metadesc", metadesc);
         brand.append("sort_order", sort_order);
         brand.append("status", status);
@@ -92,6 +96,11 @@ function BrandUpdate() {
                                         <div className="mb-3" style={{ fontWeight: "bold" }}>
                                             <label htmlFor="name">Tên thương hiệu (Name)</label>
                                             <input type="text" name="name" value={name} onChange={(e) => setName(e.target.value)} className="form-control" />
+
+                                        </div>
+                                        <div className="mb-3" style={{ fontWeight: "bold" }}>
+                                            <label htmlFor="description">Từ khoá (Metakey)</label>
+                                            <textarea name="description" value={description} onChange={(e) => setDescription(e.target.value)} className="form-control"></textarea>
 
                                         </div>
                                         <div className="mb-3" style={{ fontWeight: "bold" }}>

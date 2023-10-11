@@ -36,6 +36,7 @@ Route::delete('brand/destroy/{id}', [BrandController::class, 'destroy']);
 Route::get('category/index', [CategoryController::class, 'index']);
 Route::get('category/show/{id}', [CategoryController::class, 'show']);
 Route::post('category/update/{id}', [CategoryController::class, 'update']);
+Route::get('category_home/{limit}', [CategoryController::class, 'category_home']);
 Route::post('category/store', [CategoryController::class, 'store']);
 Route::delete('category/destroy/{id}', [CategoryController::class, 'destroy']);
 Route::get('category/category_list/{parent_id?}/{status?}', [CategoryController::class, 'category_list']);
@@ -88,6 +89,7 @@ Route::get('product_all/{limit}/{page?}', [ProductController::class, 'product_al
 Route::get('product_category/{category_id}/{limit}/{page?}', [ProductController::class, 'product_category']);
 Route::get('product_brand/{brand_id}/{limit}/{page?}', [ProductController::class, 'product_brand']);
 Route::get('product_detail/{slug}', [ProductController::class, 'product_detail']);
+Route::get('product_detail_plus/{slug}/{category_id}', [ProductController::class, 'product_detail_plus']);
 Route::get('product_category_id/{category_id}', [ProductController::class, 'product_category_id']);
 /*--Topic--*/
 Route::get('topic/index', [TopicController::class, 'index']);

@@ -18,6 +18,8 @@ return new class extends Migration
             $table->string('name');
             $table->string('link');
             $table->unsignedInteger('table_id');
+            $table->unsignedInteger('sort_order');
+            $table->unsignedInteger('parent_id');
             $table->string('type');
             $table->mediumText('content');
             $table->timestamps(); //created_at, updated_at
